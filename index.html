@@ -13,9 +13,11 @@
   <body>
     <header class="hero" id="home">
       <nav class="nav container" aria-label="القائمة الرئيسية">
-        <a class="brand logo-brand" href="#home" aria-label="Betta Technologies - الرئيسية"><img src="images/betta-logo.png" alt="Betta Technologies" /></a>
+        <a class="brand logo-brand" href="#home" aria-label="Betta Technologies - الرئيسية">
+          <img src="images/betta-logo.png" alt="Betta Technologies" />
+        </a>
         <button class="language-button" type="button">English</button>
-        <button class="menu-button" aria-label="فتح القائمة" aria-expanded="false">☰</button>
+        <button class="menu-button" type="button" aria-label="فتح القائمة" aria-expanded="false">☰</button>
         <div class="nav-links">
           <a href="#about">من نحن</a>
           <a href="#services">خدماتنا</a>
@@ -28,7 +30,7 @@
       <div class="hero-content container">
         <div class="hero-copy">
           <p class="eyebrow">BETTA TECHNOLOGIES</p>
-          <h1>نحوّل الأفكار الطموحة<br />إلى <span>تطبيقات مؤثرة.</span></h1>
+          <h1>نحوّل الأفكار الطموحة<br /><span>إلى تطبيقات مؤثرة.</span></h1>
           <p class="hero-text">نصنع تجارب رقمية ذكية تحوّل أفكارك إلى تطبيقات قوية، سهلة الاستخدام، وجاهزة للنمو مع مشروعك.</p>
           <div class="hero-actions">
             <a class="button primary" href="#contact">ابدأ فكرتك الآن <span>←</span></a>
@@ -88,7 +90,7 @@
             </div>
             <div class="mini-stat accent">
               <strong>100%</strong>
-              <span>توصل مباشر</span>
+              <span>تواصل مباشر</span>
             </div>
           </div>
         </div>
@@ -227,149 +229,57 @@
           </div>
         </div>
 
-        <div class="reviews-carousel" id="reviewsCarousel">
-          <div class="reviews-track">
-            <!-- Review 1 -->
-            <article class="review-card">
-              <div class="review-header">
-                <div class="reviewer-info">
-                  <div class="reviewer-avatar">م</div>
-                  <div>
-                    <h3>محمد الحمادي</h3>
-                    <span>مؤسس تطبيق أمان</span>
-                  </div>
-                </div>
-                <div class="review-rating">
-                  <span class="stars">★★★★★</span>
-                </div>
-              </div>
-              <p class="review-text">"من أفضل التجارب في التعامل مع Betta Technologies. احترافية كبيرة، فهم عميق للفكرة، تنفيذ دقيق جدًا. النتيجة النهائية تجاوزت توقعاتنا بكثير. سأنصح بهم بكل تأكيد."</p>
-              <div class="review-meta">
-                <span class="project-tag">Android App</span>
-                <span class="date">2024</span>
-              </div>
-            </article>
+        <div class="reviews-grid" id="reviewsGrid"></div>
 
-            <!-- Review 2 -->
-            <article class="review-card">
-              <div class="review-header">
-                <div class="reviewer-info">
-                  <div class="reviewer-avatar">ن</div>
-                  <div>
-                    <h3>نور خليفة</h3>
-                    <span>مدير مشروع درة الخيرية</span>
-                  </div>
-                </div>
-                <div class="review-rating">
-                  <span class="stars">★★★★★</span>
-                </div>
-              </div>
-              <p class="review-text">"التزام رائع بالمواعيد والجودة. فريق Betta استمع جيدًا لاحتياجاتنا وحول رؤيتنا إلى تطبيق يخدم آلاف المستخدمين. الدعم اللاحق ممتاز جدًا."</p>
-              <div class="review-meta">
-                <span class="project-tag">Platform</span>
-                <span class="date">2024</span>
-              </div>
-            </article>
-
-            <!-- Review 3 -->
-            <article class="review-card">
-              <div class="review-header">
-                <div class="reviewer-info">
-                  <div class="reviewer-avatar">أ</div>
-                  <div>
-                    <h3>أحمد محمود</h3>
-                    <span>رائد أعمال في المجال FinTech</span>
-                  </div>
-                </div>
-                <div class="review-rating">
-                  <span class="stars">★★★★★</span>
-                </div>
-              </div>
-              <p class="review-text">"بحثت عن فريق يفهم رؤيتي ويحولها بثقة. Betta كان الخيار الأمثل. التصميم جميل، التطبيق عملي، والدعم المستمر مميز. نالت ثقتنا كاملة في كل مرحلة."</p>
-              <div class="review-meta">
-                <span class="project-tag">FinTech App</span>
-                <span class="date">2023</span>
-              </div>
-            </article>
-
-            <!-- Review 4 -->
-            <article class="review-card">
-              <div class="review-header">
-                <div class="reviewer-info">
-                  <div class="reviewer-avatar">س</div>
-                  <div>
-                    <h3>سارة أحمد</h3>
-                    <span>مديرة تطبيق طلباتك</span>
-                  </div>
-                </div>
-                <div class="review-rating">
-                  <span class="stars">★★★★★</span>
-                </div>
-              </div>
-              <p class="review-text">"حلولنا تحسّنت بشكل واضح بعد التحول إلى Betta. كانت تجربة التعاون سلسة جدًا من أول يوم. اهتمامهم بالتفاصيل والجودة ميز التطبيق عن المنافسين."</p>
-              <div class="review-meta">
-                <span class="project-tag">E-commerce</span>
-                <span class="date">2023</span>
-              </div>
-            </article>
-
-            <!-- Review 5 -->
-            <article class="review-card">
-              <div class="review-header">
-                <div class="reviewer-info">
-                  <div class="reviewer-avatar">ع</div>
-                  <div>
-                    <h3>علي الغامدي</h3>
-                    <span>مؤسس منصة تعليمية</span>
-                  </div>
-                </div>
-                <div class="review-rating">
-                  <span class="stars">★★★★☆</span>
-                </div>
-              </div>
-              <p class="review-text">"Betta Technologies قدّمت لنا حلاً متكاملاً يجمع بين الابتكار والعملية. الفريق يعمل معك كشريك فعلي وليس مجرد متعاقد. نتطلع للعمل معهم على المزيد."</p>
-              <div class="review-meta">
-                <span class="project-tag">EdTech</span>
-                <span class="date">2023</span>
-              </div>
-            </article>
-
-            <!-- Review 6 -->
-            <article class="review-card">
-              <div class="review-header">
-                <div class="reviewer-info">
-                  <div class="reviewer-avatar">ل</div>
-                  <div>
-                    <h3>ليلى إبراهيم</h3>
-                    <span>مدير تسويق شركة تقنية</span>
-                  </div>
-                </div>
-                <div class="review-rating">
-                  <span class="stars">★★★★★</span>
-                </div>
-              </div>
-              <p class="review-text">"التعامل مع Betta جعل عملية التطوير سهلة وممتعة. استجابتهم السريعة لأي ملاحظات، والتحديثات المستمرة، والاهتمام بتفاصيل المستخدم كانت مميزة جدًا."</p>
-              <div class="review-meta">
-                <span class="project-tag">Custom App</span>
-                <span class="date">2024</span>
-              </div>
-            </article>
+        <form class="review-form" id="reviewForm">
+          <div class="form-header">
+            <h3>أضف مراجعة جديدة</h3>
+            <p>أدخل بيانات العميل وشارك رأيه عن خدمتنا.</p>
           </div>
 
-          <!-- Navigation -->
-          <button class="carousel-button prev" aria-label="السابق">❮</button>
-          <button class="carousel-button next" aria-label="التالي">❯</button>
-        </div>
+          <div class="form-grid">
+            <label>
+              <span>اسم العميل</span>
+              <input type="text" name="name" placeholder="مثل: علي محمد" required />
+            </label>
 
-        <!-- Pagination Dots -->
-        <div class="carousel-dots" id="carouselDots"></div>
+            <label>
+              <span>المنصب / الدور</span>
+              <input type="text" name="role" placeholder="مثل: مؤسس شركة" required />
+            </label>
+
+            <label>
+              <span>نوع المشروع</span>
+              <input type="text" name="project" placeholder="مثل: Android App" required />
+            </label>
+
+            <label>
+              <span>التقييم</span>
+              <select name="rating" required>
+                <option value="5">5 نجوم</option>
+                <option value="4">4 نجوم</option>
+                <option value="3">3 نجوم</option>
+                <option value="2">2 نجوم</option>
+                <option value="1">1 نجمة</option>
+              </select>
+            </label>
+          </div>
+
+          <label class="full-width">
+            <span>محتوى المراجعة</span>
+            <textarea name="text" rows="4" placeholder="اكتب رأيك عن الخدمة وتجربتك مع فريقنا..." required></textarea>
+          </label>
+
+          <button type="submit" class="button primary form-submit">إضافة المراجعة</button>
+          <p class="form-status" id="formStatus" aria-live="polite"></p>
+        </form>
       </section>
 
       <section class="cta container" id="contact">
         <p class="eyebrow">لديك فكرة؟</p>
         <h2>لنصنع شيئًا مميزًا<br />معًا.</h2>
         <p>أخبرنا عن فكرتك، ودعنا نحولها إلى تجربة رقمية ناجحة.</p>
-        <a class="button light" href="https://wa.me/201018430247?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D9%85%D9%84%D8%AA%D9%88%D8%A7%D8%B5%D9%84%20%D8%A8%D8%AE%D8%B5%D9%88%D8%B5%20%D8%A8%D9%80%D8%AD%D9%88%D9%84%20%D9%85%D9%84%D9%85%D8%B1%D9%83%D8%A9%20%D8%A7%D9%84%D9%86%D8%A7%D8%B1%D8%8A%D8%A9%20%D9%84%D8%B5%D9%84%D9%8A%D8%AD%D9%8A%D8%A9%20%D9%84%D8%AC%D8%AF%D9%8A%D8%AF%D8%A9%20%D9%84%D9%85%D8%B1%D8%A7%D8%AF%D9%8A%D8%A9%20%D9%84%D8%AF%20%D9%86%D9%85%D8%B1%20%D9%81%D9%8A%20%D8%A8%D9%8A%D9%86%D8%AA%20%D8%A7%D9%84%D8%AF%D9%83%D9%83%D9%84%20%D8%A8%D9%8A%D8%A7%D9%87%D8%A7%20%D8%A7%D9%84%D9%82%D9%82%D9%8A%D9%81%D9%8A%D8%A9" target="_blank" rel="noopener">ابدأ محادثتك الآن</a>
+        <a class="button light" href="https://wa.me/201018430247?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D9%85%D9%84%D8%AA%D9%88%D8%A7%D8%B5%D9%84%20%D8%A8%D8%AE%D8%B5%D9%88%D8%B5%20%D8%A8%D9%80%D8%AD%D9%88%D9%84%20%D9%85%D9%84%D9%85%D8%B1%D9%83%D8%A9%20%D8%A7%D9%84%D9%86%D8%A7%D8%B1%D8%8A%D8%A9%20%D9%84%D8%B5%D9%84%D9%8A%D8%AD%D9%8A%D9%87%D8%A9%20%D9%84%D8%AC%D8%AF%D9%8A%D8%8A%D8%A9%20%D9%84%D9%85%D8%B1%D8%A7%D8%8A%D8%A9%20%D9%84%D9%81%D9%8A%20%D8%A8%D9%8A%D9%86%D8%AA%20%D8%A7%D9%84%D9%81%D9%83%D9%83%D9%84%20%D8%A8%D9%8A%D8%A7%D9%87%D8%A7%20%D8%A7%D9%84%D9%82%D8%A7%D9%84%D9%8A%D8%A9" target="_blank" rel="noopener">ابدأ محادثتك الآن</a>
 
         <div class="contact-details">
           <a href="mailto:aaya99711@gmail.com">
