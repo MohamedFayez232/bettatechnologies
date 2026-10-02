@@ -33,7 +33,9 @@ languageButton.addEventListener('click', () => {
   document.documentElement.lang = language;
   document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr';
   translationTargets.forEach((selector, index) => {
-    document.querySelector(selector).innerHTML = translations[language][index];
+    const target = document.querySelector(selector);
+    if (target) target.innerHTML = translations[language][index];
   });
   languageButton.textContent = language === 'ar' ? 'English' : 'العربية';
+  languageButton.setAttribute('aria-label', language === 'ar' ? 'Change language' : 'تغيير اللغة');
 });
