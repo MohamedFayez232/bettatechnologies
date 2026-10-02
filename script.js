@@ -1,38 +1,172 @@
 const menuButton = document.querySelector('.menu-button');
 const navLinks = document.querySelector('.nav-links');
 const languageButton = document.querySelector('.language-button');
-menuButton.addEventListener('click', () => { const open = navLinks.classList.toggle('open'); menuButton.setAttribute('aria-expanded', String(open)); });
-document.querySelectorAll('.nav-links a').forEach((link) => link.addEventListener('click', () => navLinks.classList.remove('open')));
-document.querySelector('#year').textContent = new Date().getFullYear();
+const yearNode = document.querySelector('#year');
+const reviewsGrid = document.getElementById('reviewsGrid');
+const reviewForm = document.getElementById('reviewForm');
+const formStatus = document.getElementById('formStatus');
 
-const copy = {
-  ar: [
-    ['.nav-links a:nth-child(1)','من نحن'],['.nav-links a:nth-child(2)','خدماتنا'],['.nav-links a:nth-child(3)','آخر أعمالنا'],['.nav-links a:nth-child(4)','ابدأ مشروعك'],
-    ['.hero h1','نحوّل الأفكار الطموحة<br>إلى <span>تطبيقات مؤثرة.</span>'],['.hero-text','نصنع تجارب رقمية ذكية تحوّل أفكارك إلى تطبيقات قوية، سهلة الاستخدام، وجاهزة للنمو مع مشروعك.'],['.hero-actions a:first-child','ابدأ فكرتك الآن <span>←</span>'],['.hero-actions a:last-child','شاهد أعمالنا'],
-    ['.numbers div:nth-child(1) span','تطبيقًا تم تطويره'],['.numbers div:nth-child(2) span','عميل يثق بنا'],['.numbers div:nth-child(3) span','دعم ومتابعة'],['.section-label','من نحن'],['.about h2','شريكك التقني من الفكرة<br>إلى نجاح ملموس.'],['.about-copy p','في Betta Technologies نبتكر حلولًا رقمية تساعد المشاريع على النمو. من أول فكرة وحتى الإطلاق، ندمج التصميم الأنيق مع البرمجة الموثوقة لنصنع تطبيقات تترك أثرًا حقيقيًا.'],['.about-copy a','ابدأ مشروعك معنا <span>←</span>'],
-    ['.services-section .eyebrow','ماذا نقدم'],['.services-section h2','خدمات مصمّمة لنمو أعمالك.'],['.work .eyebrow','آخر أعمالنا'],['.work h2','تطبيقات نفخر بها.'],['.work-heading > p','نماذج من التطبيقات التي طوّرناها لتمنح المستخدمين قيمة حقيقية كل يوم.'],['.cta .eyebrow','لديك فكرة؟'],['.cta h2','لنصنع شيئًا مميزًا<br>معًا.'],['.cta > p:not(.eyebrow)','أخبرنا عن فكرتك، ودعنا نحولها إلى تجربة رقمية ناجحة.'],['.cta .button','تواصل معنا عبر واتساب <span>←</span>']
-  ],
-  en: [
-    ['.nav-links a:nth-child(1)','About us'],['.nav-links a:nth-child(2)','Services'],['.nav-links a:nth-child(3)','Our work'],['.nav-links a:nth-child(4)','Start your project'],
-    ['.hero h1','We turn ambitious ideas<br>into <span>impactful apps.</span>'],['.hero-text','We create smart digital experiences that turn your ideas into powerful, easy-to-use apps built to grow with your business.'],['.hero-actions a:first-child','Start your idea <span>→</span>'],['.hero-actions a:last-child','See our work'],
-    ['.numbers div:nth-child(1) span','Apps developed'],['.numbers div:nth-child(2) span','Clients trust us'],['.numbers div:nth-child(3) span','Support & follow-up'],['.section-label','About us'],['.about h2','Your tech partner from idea<br>to meaningful success.'],['.about-copy p','At Betta Technologies, we build digital solutions that help businesses grow. From the first idea to launch, we combine refined design with reliable development to create apps that make a real impact.'],['.about-copy a','Start your project <span>→</span>'],
-    ['.services-section .eyebrow','What we do'],['.services-section h2','Services designed for your growth.'],['.work .eyebrow','Our latest work'],['.work h2','Apps we are proud of.'],['.work-heading > p','A selection of apps we built to bring real value to users every day.'],['.cta .eyebrow','Have an idea?'],['.cta h2','Let’s build something<br>remarkable together.'],['.cta > p:not(.eyebrow)','Tell us about your idea, and let’s turn it into a successful digital experience.'],['.cta .button','Chat with us on WhatsApp <span>→</span>']
-  ]
-};
+const defaultReviews = [
+  {
+    name: 'محمد الحمادي',
+    role: 'مؤسس تطبيق أمان',
+    project: 'Android App',
+    rating: 5,
+    text: 'من أفضل التجارب في التعامل مع Betta Technologies. احترافية كبيرة، فهم عميق للفكرة، تنفيذ دقيق جدًا. النتيجة النهائية تجاوزت توقعاتنا بكثير. سأنصح بهم بكل تأكيد.'
+  },
+  {
+    name: 'نور خليفة',
+    role: 'مدير مشروع درة الخيرية',
+    project: 'Platform',
+    rating: 5,
+    text: 'التزام رائع بالمواعيد والجودة. فريق Betta استمع جيدًا لاحتياجاتنا وحول رؤيتنا إلى تطبيق يخدم آلاف المستخدمين. الدعم اللاحق ممتاز جدًا.'
+  },
+  {
+    name: 'أحمد محمود',
+    role: 'رائد أعمال في المجال FinTech',
+    project: 'FinTech App',
+    rating: 5,
+    text: 'بحثت عن فريق يفهم رؤيتي ويحولها بثقة. Betta كان الخيار الأمثل. التصميم جميل، التطبيق عملي، والدعم المستمر مميز. نالت ثقتنا كاملة في كل مرحلة.'
+  },
+  {
+    name: 'سارة أحمد',
+    role: 'مديرة تطبيق طلباتك',
+    project: 'E-commerce',
+    rating: 5,
+    text: 'حلولنا تحسّنت بشكل واضح بعد التحول إلى Betta. كانت تجربة التعاون سلسة جدًا من أول يوم. اهتمامهم بالتفاصيل والجودة ميز التطبيق عن المنافسين.'
+  }
+];
 
-function setLanguage(language) {
-  document.documentElement.lang = language;
-  document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr';
-  copy[language].forEach(([selector, value]) => { const el = document.querySelector(selector); if (el) el.innerHTML = value; });
-  const details = language === 'ar' ? [
-    ['.service-card:nth-child(1) h3','تطبيقات الموبايل'],['.service-card:nth-child(1) p','نطوّر تطبيقات Android سريعة وسلسة تحوّل فكرتك إلى تجربة يحبها المستخدمون.'],['.service-card:nth-child(2) h3','حلول رقمية مبتكرة'],['.service-card:nth-child(2) p','نبتكر أنظمة ذكية ومخصصة تواكب أهدافك وتمنح مشروعك أفضلية حقيقية.'],['.service-card:nth-child(3) h3','تصميم تجربة المستخدم'],['.service-card:nth-child(3) p','واجهات عصرية وواضحة تجعل كل تفاعل أسرع وأسهل وأكثر متعة.'],
-    ['.project-card:nth-child(1) h3','أمان'],['.project-card:nth-child(1) p','تطبيق ذكي يساعد المستخدمين على كشف محاولات النصب والاحتيال واتخاذ قرارات أكثر أمانًا.'],['.project-card:nth-child(2) h3','قطرة'],['.project-card:nth-child(2) p','منصة تبرع بالدم تربط المتبرعين بالمحتاجين بسرعة، مع بحث ذكي حسب الفصيلة والمحافظة.'],['.project-card:nth-child(3) h3','بنكي'],['.project-card:nth-child(3) p','تطبيق يساعد المهتمين بالمجال المصرفي على الاستعداد للاختبارات وتطوير معارفهم البنكية.'],['.project-card:nth-child(4) h3','طلباتك'],['.project-card:nth-child(4) p','تطبيق تسوق إلكتروني يجعل شراء احتياجاتك اليومية أسهل، أسرع، وفي متناول يدك.']
-  ] : [
-    ['.service-card:nth-child(1) h3','Mobile apps'],['.service-card:nth-child(1) p','We build fast, seamless Android apps that turn your idea into an experience users love.'],['.service-card:nth-child(2) h3','Innovative digital solutions'],['.service-card:nth-child(2) p','We create smart, tailored systems that serve your goals and give your business a real advantage.'],['.service-card:nth-child(3) h3','User experience design'],['.service-card:nth-child(3) p','Modern, intuitive interfaces that make every interaction faster, easier, and more enjoyable.'],
-    ['.project-card:nth-child(1) h3','Aman'],['.project-card:nth-child(1) p','A smart app that helps users spot scam and fraud attempts, so they can make safer decisions.'],['.project-card:nth-child(2) h3','Qatra'],['.project-card:nth-child(2) p','A blood-donation platform connecting donors with people in need through smart search by blood type and location.'],['.project-card:nth-child(3) h3','Banky'],['.project-card:nth-child(3) p','An app that helps banking professionals prepare for exams and build essential financial knowledge.'],['.project-card:nth-child(4) h3','Talabatak'],['.project-card:nth-child(4) p','An online-shopping app that makes buying everyday essentials easier, faster, and always within reach.']
-  ];
-  details.forEach(([selector, value]) => { const el = document.querySelector(selector); if (el) el.innerHTML = value; });
-  document.querySelector('#year').textContent = new Date().getFullYear();
-  languageButton.textContent = language === 'ar' ? 'English' : 'العربية';
+const storageKey = 'bettaClientReviews';
+
+function getReviews() {
+  try {
+    const saved = localStorage.getItem(storageKey);
+    if (!saved) return defaultReviews;
+    const parsed = JSON.parse(saved);
+    return Array.isArray(parsed) && parsed.length ? parsed : defaultReviews;
+  } catch (error) {
+    console.error('Error loading reviews:', error);
+    return defaultReviews;
+  }
 }
-languageButton.addEventListener('click', () => setLanguage(document.documentElement.lang === 'ar' ? 'en' : 'ar'));
+
+function saveReviews(reviews) {
+  try {
+    localStorage.setItem(storageKey, JSON.stringify(reviews));
+  } catch (error) {
+    console.error('Error saving reviews:', error);
+  }
+}
+
+function getStars(rating) {
+  const filled = '★'.repeat(rating);
+  const empty = '☆'.repeat(5 - rating);
+  return filled + empty;
+}
+
+function renderReviews() {
+  if (!reviewsGrid) return;
+
+  const reviews = getReviews();
+  const firstLetter = (str) => (str || 'م').charAt(0);
+
+  reviewsGrid.innerHTML = reviews
+    .map(
+      (review) => `
+        <article class="review-card">
+          <div class="review-header">
+            <div class="reviewer-info">
+              <div class="reviewer-avatar">${firstLetter(review.name)}</div>
+              <div>
+                <h3>${review.name || 'بدون اسم'}</h3>
+                <span>${review.role || 'عميل'}</span>
+              </div>
+            </div>
+            <div class="review-rating" aria-label="تقييم ${review.rating} من 5">
+              <span class="stars">${getStars(review.rating || 5)}</span>
+            </div>
+          </div>
+          <p class="review-text">"${review.text || ''}"</p>
+          <div class="review-meta">
+            <span class="project-tag">${review.project || 'Project'}</span>
+            <span class="date">${new Date().getFullYear()}</span>
+          </div>
+        </article>
+      `
+    )
+    .join('');
+}
+
+// Menu toggle
+if (menuButton && navLinks) {
+  menuButton.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    menuButton.setAttribute('aria-expanded', String(isOpen));
+  });
+
+  navLinks.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      menuButton.setAttribute('aria-expanded', 'false');
+    });
+  });
+}
+
+// Year update
+if (yearNode) {
+  yearNode.textContent = new Date().getFullYear();
+}
+
+// Review form submission
+if (reviewForm) {
+  reviewForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const formData = new FormData(reviewForm);
+    const name = String(formData.get('name') || '').trim();
+    const role = String(formData.get('role') || '').trim();
+    const project = String(formData.get('project') || '').trim();
+    const rating = Number(formData.get('rating') || 5);
+    const text = String(formData.get('text') || '').trim();
+
+    // Validation
+    if (!name || !role || !project || !text) {
+      if (formStatus) {
+        formStatus.textContent = 'يرجى تعبئة جميع الحقول قبل الإرسال.';
+        formStatus.style.color = '#d9534f';
+      }
+      return;
+    }
+
+    // Add new review
+    const reviews = getReviews();
+    const newReview = { name, role, project, rating, text };
+    const updatedReviews = [newReview, ...reviews].slice(0, 20);
+    saveReviews(updatedReviews);
+    renderReviews();
+    reviewForm.reset();
+
+    // Success message
+    if (formStatus) {
+      formStatus.textContent = '✓ تمت إضافة مراجعتك بنجاح! شكرًا لك.';
+      formStatus.style.color = '#5cb85c';
+      setTimeout(() => {
+        formStatus.textContent = '';
+      }, 4000);
+    }
+  });
+}
+
+// Language toggle
+if (languageButton) {
+  languageButton.addEventListener('click', () => {
+    const current = document.documentElement.lang === 'ar' ? 'en' : 'ar';
+    document.documentElement.lang = current;
+    document.documentElement.dir = current === 'ar' ? 'rtl' : 'ltr';
+    languageButton.textContent = current === 'ar' ? 'English' : 'العربية';
+  });
+}
+
+// Initial render
+renderReviews();
